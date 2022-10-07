@@ -1,0 +1,7 @@
+button{
+  margin-bottom: 30px;
+}
+button:hover{
+  background-color: rgb(138, 138, 252);
+  transition: 1s;
+}
