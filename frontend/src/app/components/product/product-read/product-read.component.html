@@ -1,1 +1,28 @@
-<p>Aqui vai a tabela com os produtos</p>
+<div class="content" *ngIf="products.length > 0; else noProducts">
+  <table class="rTable">
+    <thead>
+      <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Ações</th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products" class="borda">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price | currency: 'BRL' }}</td>
+        <td>
+          <a routerLink="/products/update/{{product.id}}" title="Editar" class="edit"><i class="material-icons ">edit</i></a>
+          <a routerLink="/products/delete/{{product.id}}" title="Excluir" class="delete"><i class="material-icons">delete</i></a>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noProducts>
+<h3>Não existe produto cadastrado, se desejar cadastre um novo Produto</h3>
+</ng-template>

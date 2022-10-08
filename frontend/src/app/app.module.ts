@@ -1,5 +1,5 @@
 import { AppRoutingModule } from './app-routing.module';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 
@@ -25,6 +25,14 @@ import { ProductCreateComponent } from './components/product/product-create/prod
 import { FormsModule } from '@angular/forms';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
 
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+
+registerLocaleData(localePt)
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +43,9 @@ import { ProductReadComponent } from './components/product/product-read/product-
     HomeComponent,
     ProductsCrudComponent,
     ProductCreateComponent,
-    ProductReadComponent
+    ProductReadComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +62,12 @@ import { ProductReadComponent } from './components/product/product-read/product-
     MatFormFieldModule,
     MatInputModule,
 
+
   ],
-  providers: [],
+  providers: [{
+provide:LOCALE_ID,
+useValue:'pt-BR'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
